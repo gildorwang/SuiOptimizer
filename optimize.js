@@ -1,8 +1,10 @@
 var storeList = document.getElementById("ul_tb-store");
 var accountList = document.getElementById("ul_tb-outAccount-1");
+var projectList = document.getElementById("ul_tb-project");
 
 sortList(storeList, true);
 sortList(accountList, false);
+sortList(projectList, true);
 
 var datePicker = document.getElementById("tb-datepicker");
 var d = new Date();
