@@ -1,10 +1,14 @@
-var storeList = document.getElementById("ul_tb-store");
-var accountList = document.getElementById("ul_tb-outAccount-1");
-var projectList = document.getElementById("ul_tb-project");
+// Expense page
+sortList(document.getElementById("ul_tb-outAccount-1"), false);
+// Income page
+sortList(document.getElementById("ul_tb-inAccount-5"), false);
+// Transfer page
+sortList(document.getElementById("ul_tb-outAccount-2"), false);
+sortList(document.getElementById("ul_tb-inAccount-2"), false);
 
-sortList(storeList, true);
-sortList(accountList, false);
-sortList(projectList, true);
+// Common
+sortList(document.getElementById("ul_tb-store"), true);
+sortList(document.getElementById("ul_tb-project"), true);
 
 var datePicker = document.getElementById("tb-datepicker");
 var d = new Date();
