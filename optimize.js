@@ -32,7 +32,7 @@ function sortList(listElement, keepFirst) {
 
     // Sort the remaining ones
     itemsArr.sort(function (a, b) {
-        return a.innerHTML == b.innerHTML ? 0 : (a.innerHTML > b.innerHTML ? 1 : -1);
+        return a.innerHTML.localeCompare(b.innerHTML, "zh-CN", {"sensitivity": "base"})
     });
     // Clear the original DOM list
     while (listElement.lastChild) {
