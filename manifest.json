@@ -1,6 +1,6 @@
 {
     "name": "Sui Optimizer",
-    "version": "1.3",
+    "version": "1.4",
     "description": "Make the sui.com slightly easier to use.",
     "permissions": ["tabs", "webNavigation", "https://www.sui.com/"],
     "background": {

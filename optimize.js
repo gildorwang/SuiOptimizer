@@ -15,6 +15,20 @@ var d = new Date();
 var timeString = d.getFullYear() + "." + ("0" + (d.getMonth() + 1)).slice(-2) + "." + ("0" + d.getDate()).slice(-2) + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
 datePicker.value = timeString;
 
+// Create an iframe to host and periodically refresh the current page
+var iframeId = "sui_optimizer_hidden_reload_frame";
+if (!document.getElementById(iframeId)) {
+    var iframe = document.createElement("iframe");
+    iframe.id = iframeId;
+    iframe.style.display = "none";
+    iframe.src = document.location.href;
+    document.body.appendChild(iframe);
+    setInterval(function() {
+        console.debug("reloading iframe.")
+        iframe.contentWindow.location.reload();
+    }, 10 * 60 * 1000);
+}
+
 function sortList(listElement, keepFirst) {
     var items = listElement.childNodes;
     var itemsArr = [];
