@@ -10,6 +10,10 @@ sortList(document.getElementById("ul_tb-inAccount-2"), false);
 sortList(document.getElementById("ul_tb-store"), true);
 sortList(document.getElementById("ul_tb-project"), true);
 
+// Sort the filter list
+// Store filter
+sortList(document.getElementById("pBox-cSto"), false, function (li) { return li.lastChild.innerHTML; });
+
 var datePicker = document.getElementById("tb-datepicker");
 var d = new Date();
 var timeString = d.getFullYear() + "." + ("0" + (d.getMonth() + 1)).slice(-2) + "." + ("0" + d.getDate()).slice(-2) + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
@@ -29,7 +33,12 @@ if (!document.getElementById(iframeId)) {
     }, 10 * 60 * 1000);
 }
 
-function sortList(listElement, keepFirst) {
+function sortList(listElement, keepFirst, key) {
+    if (!key) {
+        key = function (item) {
+            return item.innerHTML;
+        };
+    }
     var items = listElement.childNodes;
     var itemsArr = [];
     items.forEach(function (item) {
@@ -46,7 +55,7 @@ function sortList(listElement, keepFirst) {
 
     // Sort the remaining ones
     itemsArr.sort(function (a, b) {
-        return a.innerHTML.localeCompare(b.innerHTML, "zh-CN", {"sensitivity": "base"})
+        return key(a).localeCompare(key(b), "zh-CN", {"sensitivity": "base"})
     });
     // Clear the original DOM list
     while (listElement.lastChild) {
